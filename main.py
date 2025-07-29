@@ -145,19 +145,14 @@ async def verify_face_api(target_name: str):
                         if face_distances[best_match_index] < recognition_threshold:
                             recognized_name = known_face_names[best_match_index]
                             if recognized_name.lower() == target_name.lower():
-                                name_for_display = (
-                                    f'Client {recognized_name} Authenticated'
-                                )
+                                name_for_display = 'Authenticated'
                                 box_color = (0, 255, 0) # Green
                                 print(
                                     f'Target "{recognized_name}" identified! '
                                     'Signalling completion.'
                                 )
                                 found_person_name_holder['name'] = recognized_name
-                                recognition_event.set() # Stop the loop                                
-                            else:
-                                name_for_display = f'Known: {recognized_name}'
-                                box_color = (255, 165, 0) # Orange                    
+                                recognition_event.set() # Stop the loop                                                   
                     # Draw a box around the face
                     cv2.rectangle(
                         display_frame, (left, top), (right, bottom), box_color, 2
@@ -175,7 +170,7 @@ async def verify_face_api(target_name: str):
                         name_for_display,
                         (left + 6, bottom - 6),
                         font,
-                        0.8,
+                        0.6,
                         (255, 255, 255),
                         1
                     )
@@ -214,4 +209,4 @@ async def verify_face_api(target_name: str):
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run('app:app', host='0.0.0.0', port=8002)
+    uvicorn.run('main:app', host='0.0.0.0', port=8002)

@@ -51,7 +51,7 @@ This project provides a real-time face verification API using FastAPI and OpenCV
 4. **Set up the Known Faces Directory**
    The application needs a directory of images to learn from.
 
-   - Create a directory named `known_people` in the same folder as `app.py`.
+   - Create a directory named `known_people` in the same folder as `main.py`.
    - Inside `known_people`, create a sub-directory for each person you want to recognize. The name of the sub-directory will be used as the person's name (e.g., `john_doe`).
    - Place one or more clear images (in `.jpg`, `.jpeg`, or `.png` format) of that person inside their respective sub-directory.
 
@@ -59,7 +59,7 @@ This project provides a real-time face verification API using FastAPI and OpenCV
 
    ```
    .
-   ├── app.py
+   ├── main.py
    └── known_people/
        ├── jane_doe/
        │   ├── image1.jpg
@@ -74,7 +74,7 @@ This project provides a real-time face verification API using FastAPI and OpenCV
    Run the following command in your terminal from the project's root directory:
 
    ```bash
-   uvicorn app:app --host 0.0.0.0 --port 8002
+   uvicorn main:app --host 0.0.0.0 --port 8002
    ```
 
    The server will start, and the application will load the known faces from the `known_people` directory.
